@@ -2,6 +2,7 @@ package test;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import utilities.Driver;
 
 import java.util.concurrent.TimeUnit;
 
@@ -13,13 +14,10 @@ public class _01_Validate_Apple_Title {
     */
 
     public static void main(String[] args) throws InterruptedException {
-        System.setProperty("webdriver.chrome.driver", "/Users/uthmanmusleh/IdeaProjects/selenium_intro/chromedriver");
-        WebDriver driver = new ChromeDriver();
+        //1. Set up Driver
+        WebDriver driver = Driver.getDriver();
 
-        driver.manage().window().maximize();
-
-        driver.manage().timeouts().implicitlyWait(60, TimeUnit.SECONDS);
-
+        //2. Validation
         driver.get("https://www.apple.com/");
 
         if (driver.getTitle().equals("Apple")) System.out.println("Apple title validation Passed");
@@ -27,8 +25,8 @@ public class _01_Validate_Apple_Title {
 
         System.out.println("End of the program");
 
-        Thread.sleep(3000);
-        driver.quit();
+        //3. Quit Driver
+        Driver.quitDriver();
 
 
     }
